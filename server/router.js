@@ -7,9 +7,9 @@ const clientID = process.env.CLIENTID
 const clientSecret = process.env.CLIENTSECRET
 const port = process.env.PORT
 
-router.get('/', async ({ query }, response) => {
-	const { code } = query;
-
+router.get('/api/user', async ({ headers }, res) => {
+  console.log('tocou')
+	const { code } = headers;
 	if (code) {
 		try {
 			const oauthResult = await fetch('https://discord.com/api/oauth2/token', {
@@ -33,21 +33,16 @@ router.get('/', async ({ query }, response) => {
           authorization: `${oauthData.token_type} ${oauthData.access_token}`,
         },
       });
-
-      response.query = {
-        access_token: oauthData.access_token,
-        token_type: oauthData.token_type,
-        state: query.state
-      }
+      const userJSON = await userResult.json()
+      res.send(userJSON)
+      console.log(userJSON)
 		} catch (error) {
       // NOTE: An unauthorized token will not throw an error;
-			// it will return a 401 Unauthorized response in the try block above
+			// it will return a 401 Unauthorized res in the try block above
 			console.error(error);
 		}
 	}
-  
-  console.log(response.query);
-  return response.sendFile('./server/front/index.html', { root: '.' });
+
 })
 
 module.exports =  router

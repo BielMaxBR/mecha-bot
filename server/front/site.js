@@ -1,39 +1,21 @@
-function generateRandomString() {
-  let randomString = '';
-  const randomNumber = Math.floor(Math.random() * 10);
-
-  for (let i = 0; i < 20 + randomNumber; i++) {
-    randomString += String.fromCharCode(33 + Math.floor(Math.random() * 94));
-  }
-
-  return randomString;
-}
-
 window.onload = () => {
   const fragment = new URLSearchParams(window.location.search)
-  const [accessToken, tokenType, state] = [fragment.get('access_token'), fragment.get('token_type'), fragment.get('state')];
-  console.debug({fragment,accessToken,tokenType,state})
-  if (!accessToken) {
-    const randomString = generateRandomString();
-    localStorage.setItem('oauth-state', randomString);
-
-    document.getElementById('login').href += `&state=${encodeURIComponent(btoa(randomString))}`;
+  const code = fragment.get('code')
+  console.log(code)
+  if (!code) {
     return document.getElementById('login').style.display = 'block';
-  }
-
-  if (localStorage.getItem('oauth-state') !== atob(decodeURIComponent(state))) {
-    return console.log('You may have been click-jacked!');
-  }
-
-  fetch('https://discord.com/api/users/@me', {
-    headers: {
-      authorization: `${tokenType} ${accessToken}`
-    }
-  })
-    .then(result => result.json())
-    .then(response => {
-      const { username, discriminator } = response;
-      document.getElementById('info').innerText += ` ${username}#${discriminator}`;
+  } else {
+    fetch("/api/user",{
+      method:'GET',
+      headers: {
+        code: code
+      }
     })
-    .catch(console.error);
+    .then(response => response.json())
+    .then(res => {
+      console.log(res)
+    })  
+  
+  }
 }
+console.log(window.location)

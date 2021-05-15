@@ -7,8 +7,7 @@ const app = express()
 const server = http.createServer(app)
 
 app.use(router)
-
-app.use(express.static(path.join(__dirname, './front')))
+app.use(express.static(path.join(__dirname, 'front')))
 
 console.log("site no ar")
 

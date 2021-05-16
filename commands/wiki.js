@@ -4,8 +4,8 @@ const Discord = require('discord.js')
 
 module.exports = async function({message, args}) {
   let content = ''
-  args.forEach(val => content += val.toString()+" ")
-  const url = 'https://api.duckduckgo.com/?q='+content+'&format=json&pretty=1&skip_disambig=1&no_html=1'
+  args.forEach(val => content += val.toString()+"+")
+  const url = 'https://api.duckduckgo.com/?q='+encodeURI(content)+'&format=json&pretty=1&skip_disambig=1&no_html=1'
 
   console.log(url)
 

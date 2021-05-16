@@ -1,13 +1,13 @@
 const fetch = require('node-fetch');
 
-module.exports = async function({message, args = new Array(0)}) {
+module.exports = async function({message, args}) {
   let content = ''
   args.forEach(val => content += " "+val.toString())
-  fetch('https://pt.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch='+content).then(response => response.json())
+  fetch('https://pt.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search='+content).then(response => response.json())
   .then(async response =>{
-    const result = JSON.stringify(response.query.search[0].snippet)
-    console.log(response)
-    await message.channel.send("```json\n"+result+"\n```")
+    const result = response[3]
+    console.log(result)
+    await message.channel.send(result)
   })
 }
 

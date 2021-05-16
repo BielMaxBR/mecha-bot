@@ -1,6 +1,6 @@
 const { Client } = require("discord.js")
 const client = new Client()
-const prefix = '!!'
+const prefix = 'M'
 
 client.on('ready', ()=>{
   client.user.setActivity('mecha bot na área', 'COMPETING')

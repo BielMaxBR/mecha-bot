@@ -1,7 +1,7 @@
 module.exports = async ({message, args}) => {
   let texto = ''
-  args.forEach(value => texto += value.toString()+" ")
-  await message.channel.send(flipString(texto))
+  args.forEach(value => texto += value.toStri+" ")
+  await message.channel.send("```\n"+flipString(texto)+"\n```")
 }
 
 function flipString(aString) {

@@ -1,13 +1,19 @@
 const fetch = require('node-fetch');
+const cheerio = require('cheerio')
 
 module.exports = async function({message, args}) {
   let content = ''
   args.forEach(val => content += " "+val.toString())
   fetch('https://pt.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search='+content).then(response => response.json())
   .then(async response =>{
-    const result = response[3]
-    console.log(result)
-    await message.channel.send(result)
+    const link = response[3]
+
+    const html = await fetch(link)
+
+    let $ = cheerio.load(html)
+
+    console.log($)
+    await message.channel.send(link)
   })
 }
 

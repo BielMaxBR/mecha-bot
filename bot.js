@@ -1,4 +1,5 @@
 const { Client } = require("discord.js")
+const { existsSync } = require("fs")
 const client = new Client()
 const prefix = 'M'
 
@@ -8,23 +9,24 @@ client.on('ready', ()=>{
     "amogus",
     "minescrefts",
     "fogo gratis",
-    "tretris"
+    "tretris",
+    "robrox",
+    "bosta pela janela"
   ]
   i = 0;
-  setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 3000);
+  setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
 })
 
 client.on('message',message => {
   const content = message.content
+  console.log(message.channel.name)
   if (!content.startsWith(prefix) || message.author.bot) return;
   
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
-  
-  try {
-    require(`./commands/${command}.js`)({client,message,args})
-  } catch(err) {
-    console.log(err)
+  const path = `./commands/${command}.js`
+  if (existsSync(path)) {
+    require(path)({client,message,args})
   }
 })
 

@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 module.exports = async function({message, args}) {
   let content = ''
-  args.forEach(val => content += " "+val.toString())
+  args.forEach(val => content += val.toString()+" ")
   const url = 'https://pt.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search='+content
 
   console.log(url)

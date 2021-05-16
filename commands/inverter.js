@@ -1,5 +1,5 @@
 module.exports = async ({message, args}) => {
-  const texto = ''
+  let texto = ''
   args.forEach(value => texto += value.toString()+" ")
   await message.channel.send(flipString(texto))
 }

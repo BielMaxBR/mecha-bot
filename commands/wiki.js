@@ -12,12 +12,19 @@ module.exports = async function({message, args}) {
   fetch(url,{headers:{"accept-language": "en-US"}}).then(response => response.json())
   .then(async res =>{
     console.log(res)
+
+    const fields = []
+    
+    for (const topic of response.aaa)
+
     const Embed = new MessageEmbed()
       .setColor('#faf600')
       .setTitle(res.Heading)
       .setAuthor(res.AbstractSource)
       .setDescription(res.AbstractText)
       .setThumbnail(res.Image != '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
+      .addField("Related Topics",".")
+      .addFields(topics)
       .setTimestamp()
       .setFooter('DuckDuckGo api')
       .setURL(res.AbstractURL)

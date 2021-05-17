@@ -23,7 +23,7 @@ module.exports = async function({message, args}) {
       })
       console.log(topic)
     }
-
+    fields.length = fields.length>5?5:fields.length
     const Embed = new MessageEmbed()
       .setColor('#faf600')
       .setTitle(res.Heading)

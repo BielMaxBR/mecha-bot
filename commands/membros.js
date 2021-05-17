@@ -1,3 +1,3 @@
 module.exports = async({message})=>{
-  await message.channel.send(message)
+  console.log(message)
 }

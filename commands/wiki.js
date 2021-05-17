@@ -15,7 +15,13 @@ module.exports = async function({message, args}) {
 
     const fields = []
     
-    for (const topic of response.aaa)
+    for (const topic of response.RelatedTopics) {
+      fields.push({
+        name: topic.Text,
+        value: topic.Result,
+        inline: true
+      })
+    }
 
     const Embed = new MessageEmbed()
       .setColor('#faf600')
@@ -24,7 +30,7 @@ module.exports = async function({message, args}) {
       .setDescription(res.AbstractText)
       .setThumbnail(res.Image != '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
       .addField("Related Topics",".")
-      .addFields(topics)
+      .addFields(fields)
       .setTimestamp()
       .setFooter('DuckDuckGo api')
       .setURL(res.AbstractURL)

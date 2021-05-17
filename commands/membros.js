@@ -1,3 +1,3 @@
 module.exports = async({message})=>{
-  await message.channel.send(message.guild)
+  await message.channel.send(message)
 }

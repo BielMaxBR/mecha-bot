@@ -21,7 +21,7 @@ client.on('message',message => {
   const content = message.content
   console.log(message.channel.name)
   if(content.toLowerCase().startsWith('ceira')) {
-    message.channel.send(content.subtring('ceira')+".")
+    message.channel.send(content.slice(0,5)+".")
   }
   if (!content.startsWith(prefix) || message.author.bot) return;
   

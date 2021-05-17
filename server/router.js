@@ -33,6 +33,7 @@ router.get('/api/user', async ({ headers }, res) => {
           authorization: `${oauthData.token_type} ${oauthData.access_token}`,
         },
       });
+      console.log(oauthData)
       const userJSON = await userResult.json()
       res.send(userJSON)
       console.log(userJSON)

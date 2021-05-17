@@ -1,3 +1,5 @@
 module.exports = async({message})=>{
-  console.log(message.channel.guild)
+  const request = await fetch('https://discord.com/api/guilds/'+message.channel.guild.id)
+  const result = await request.json()
+  console.log(await result)
 }

@@ -21,6 +21,7 @@ module.exports = async function({message, args}) {
         value: topic.FirstURL,
         inline: true
       })
+      console.log(topic)
     }
 
     const Embed = new MessageEmbed()

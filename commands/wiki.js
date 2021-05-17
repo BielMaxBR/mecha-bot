@@ -1,18 +1,18 @@
 const fetch = require('node-fetch');
-const Discord = require('discord.js')
+const {MessageEmbed} = require('discord.js')
 //const cheerio = require('cheerio')
 
 module.exports = async function({message, args}) {
   let content = ''
-  args.forEach(val => content += val.toString()+"+")
-  const url = 'https://api.duckduckgo.com/?q='+encodeURI(content)+'&format=json&pretty=1&skip_disambig=1&no_html=1'
+  args.forEach(val => content += val.toString()+" ")
+  const url = 'https://api.duckduckgo.com/?q='+encodeURI(content)+'&format=json&pretty=0&skip_disambig=1&no_html=1'
 
   console.log(url)
 
-  fetch(url,{headers:{"accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"}}).then(response => response.json())
+  fetch(url,{headers:{"accept-language": "en-US"}}).then(response => response.json())
   .then(async res =>{
     console.log(res)
-    const exampleEmbed = new Discord.MessageEmbed()
+    const Embed = new MessageEmbed()
       .setColor('#faf600')
       .setTitle(res.Heading)
       .setAuthor(res.AbstractSource)
@@ -23,6 +23,6 @@ module.exports = async function({message, args}) {
       .setURL(res.AbstractURL)
 
 
-    await message.channel.send(exampleEmbed)
+    await message.channel.send(Embed)
   })
 }

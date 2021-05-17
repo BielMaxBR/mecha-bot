@@ -18,7 +18,7 @@ module.exports = async function({message, args}) {
     for (const topic of res.RelatedTopics) {
       fields.push({
         name: topic.Text,
-        value: topic.Result,
+        value: topic.FirstURL,
         inline: true
       })
     }

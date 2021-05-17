@@ -19,7 +19,7 @@ router.get('/api/user', async ({ headers }, res) => {
 					client_secret: clientSecret,
 					code,
 					grant_type: 'authorization_code',
-					redirect_uri: `https://53134-lime-panther-ufkedrzg.ws-us04.gitpod.io/`,
+					redirect_uri: `http://localhost:5000`,
 					scope: 'identify',
 				}),
 				headers: {

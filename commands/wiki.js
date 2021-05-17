@@ -15,7 +15,7 @@ module.exports = async function({message, args}) {
 
     const fields = []
     
-    for (const topic of response.RelatedTopics) {
+    for (const topic of res.RelatedTopics) {
       fields.push({
         name: topic.Text,
         value: topic.Result,

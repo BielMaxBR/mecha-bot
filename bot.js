@@ -20,6 +20,9 @@ client.on('ready', ()=>{
 client.on('message',message => {
   const content = message.content
   console.log(message.channel.name)
+  if(content.toLowerCase().indexOf('ceira') != -1) {
+    message.reply('CHEGA DE CEIRA MLK')
+  }
   if (!content.startsWith(prefix) || message.author.bot) return;
   
   const args = content.slice(prefix.length).trim().split(' ');

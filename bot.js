@@ -4,6 +4,9 @@ const client = new Client()
 const prefix = 'M'
 
 client.on('ready', ()=>{
+  console.log('bot iniciado')
+  
+  console.log(client)
   client.user.setActivity('mecha bot na área', 'COMPETING')
   let activities = [
     "amogus",

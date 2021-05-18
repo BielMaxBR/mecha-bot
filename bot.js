@@ -19,10 +19,6 @@ client.on('ready', ()=>{
 
 client.on('message',message => {
   const content = message.content
-  console.log(message.channel.name)
-  if(content.toLowerCase().startsWith('ceira') ) {
-    message.channel.send(content.slice(6)+" ....................")
-  }
   if (!content.startsWith(prefix) || message.author.bot) return;
   
   const args = content.slice(prefix.length).trim().split(' ');

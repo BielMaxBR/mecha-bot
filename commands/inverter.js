@@ -10,137 +10,55 @@ function flipString(aString) {
   var last = aString.length - 1;
   var result = "";
   for (var i = last; i >= 0; --i) {
-    result += flipChar(aString.charAt(i))
+    result += flipChar[aString.charAt(i)]
   }
+  console.log(result)
   return result;
 }
 
-function flipChar(c) {
-  if (c == 'a') {
-    return '\u0250'
-  }
-  else if (c == 'b') {
-    return 'q'
-  }
-  else if (c == 'c') {
-    return '\u0254'
-  }
-  else if (c == 'd') {
-    return 'p'
-  }
-  else if (c == 'e') {
-    return '\u01DD'
-  }
-  else if (c == 'f') {
-    return '\u025F'
-  }
-  else if (c == 'g') {
-    return '\u0183'
-  }
-  else if (c == 'h') {
-    return '\u0265'
-  }
-  else if (c == 'i') {
-    return '\u0131' //'\u0131\u0323' 
-  }
-  else if (c == 'j') {
-    return '\u027E' //original: \u0638
-  }
-  else if (c == 'k') {
-    return '\u029E'
-  }
-  else if (c == 'l') {
-    return '\u05DF'
-  }
-  else if (c == 'm') {
-    return '\u026F'
-  }
-  else if (c == 'n') {
-    return 'u'
-  }
-  else if (c == 'o') {
-    return 'o'
-  }
-  else if (c == 'p') {
-    return 'd'
-  }
-  else if (c == 'q') {
-    return 'b'
-  }
-  else if (c == 'r') {
-    return '\u0279'
-  }
-  else if (c == 's') {
-    return 's'
-  }
-  else if (c == 't') {
-    return '\u0287'
-  }
-  else if (c == 'u') {
-    return 'n'
-  }
-  else if (c == 'v') {
-    return '\u028C'
-  }
-  else if (c == 'w') {
-    return '\u028D'
-  }
-  else if (c == 'x') {
-    return 'x'
-  }
-  else if (c == 'y') {
-    return '\u028E'
-  }
-  else if (c == 'z') {
-    return 'z'
-  }
-  else if (c == '[') {
-    return ']'
-  }
-  else if (c == ']') {
-    return '['
-  }
-  else if (c == '(') {
-    return ')'
-  }
-  else if (c == ')') {
-    return '('
-  }
-  else if (c == '{') {
-    return '}'
-  }
-  else if (c == '}') {
-    return '{'
-  }
-  else if (c == '?') {
-    return '\u00BF'
-  }
-  else if (c == '\u00BF') {
-    return '?'
-  }
-  else if (c == '!') {
-    return '\u00A1'
-  }
-  else if (c == "\'") {
-    return ','
-  }
-  else if (c == ',') {
-    return "\'"
-  }
-  else if (c == '.') {
-    return '\u02D9'
-  }
-  else if (c == '_') {
-    return '\u203E'
-  }
-  else if (c == ';') {
-    return '\u061B'
-  }
-  else if (c == '9') {
-    return '6'
-  }
-  else if (c == '6') {
-    return '9'
-  }
-  return c;
+let flipChar = {
+  'a':'\u0250',
+  'b':'q',
+  'c':'\u0254',
+  'd':'p',
+  'e':'\u01DD',
+  'f':'\u025F',
+  'g':'\u0183',
+  'h':'\u0265',
+  'i':'\u0131',
+  'j':'\u027E',
+  'k':'\u029E',
+  'l':'\u05DF',
+  'm':'\u026F',
+  'n':'u',
+  'o':'o',
+  'p':'d',
+  'q':'b',
+  'r':'\u0279',
+  's':'s',
+  't':'\u0287',
+  'u':'n',
+  'v':'\u028C',
+  'w':'\u028D',
+  'x':'x',
+  'y':'\u028E',
+  'z':'z',
+  '[':']',
+  ']':'[',
+  '(':')',
+  ')':'(',
+  '{':'}',
+  '}':'{',
+  '?':'\u00BF',
+  '\u00BF':'?',
+  '!':'\u00A1',
+  "\'":',',
+  ',':"\'",
+  '.':'\u02D9',
+  '_':'\u203E',
+  ';':'\u061B',
+  '9':'6',
+  '6':'9',
+  ' ': ' ',
+  'ç': '\u0254'
 }

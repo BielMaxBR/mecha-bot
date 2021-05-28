@@ -1,0 +1,16 @@
+module.exports = async ({ message, args }) => {
+    let jooj = ["pedra", "papel", "tesoura"];
+    let player = Math.round(2 * Math.random())
+    let bot = Math.round(2 * Math.random())
+    let ganhador = "Perdeu!"
+
+    if (player == 0) player = 3
+    if (bot == 0) bot = 3
+
+    if (bot < player) ganhador = "Ganhou!"
+    if (bot == player) ganhador = "Empatou!"
+
+    const mensagem = "Jokenpo! \n bot[" + jooj[bot] + "]\n" + "Voce[" + jooj[player] + "]\n Voce " + ganhador
+
+    await message.channel.send(mensagem)
+}

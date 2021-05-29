@@ -6,7 +6,6 @@ const prefix = 'M'
 client.on('ready', ()=>{
   console.log('bot iniciado')
   
-  console.log(Object.values(client.guilds.cache)[1])
   client.user.setActivity('mecha bot na área', 'COMPETING')
   let activities = [
     "amogus",

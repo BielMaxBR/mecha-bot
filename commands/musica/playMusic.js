@@ -2,7 +2,7 @@ const ytdl = require('ytdl-core')
 
 const log = require('./log.js')
 
-module.exports = async (message, musicLink) => {
+module.exports = async (message, musicLink, client) => {
   let Vchannel = message.member.voice.channel
   let connection = await Vchannel.join()
   
@@ -16,6 +16,8 @@ module.exports = async (message, musicLink) => {
   }
   let music = ytdl(musicLink)
   connection.play(music)
-  log(message.channel, 'playing')
 
+  log(message.channel, 'playing')
+  if (!client.VConnections) client.VConnections = {}
+  client.VConnections[Vchannel.id] = connection 
 }

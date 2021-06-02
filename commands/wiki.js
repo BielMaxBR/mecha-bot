@@ -16,11 +16,22 @@ module.exports = async function({message, args}) {
     const fields = []
     
     for (const topic of res.RelatedTopics) {
+        if (topic.Text.length > 256)
+        {
+            fields.push({
+                name: "URL",
+                value: topic.FirstURL,
+                inline: true
+            })
+        }
+        else
+        {
       fields.push({
         name: topic.Text,
         value: topic.FirstURL,
         inline: true
       })
+        }
       console.log(topic)
     }
     fields.length = fields.length>5?5:fields.length
@@ -29,7 +40,7 @@ module.exports = async function({message, args}) {
       .setTitle(res.Heading)
       .setAuthor(res.AbstractSource)
       .setDescription(res.AbstractText)
-      .setThumbnail(res.Image != '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
+      .setThumbnail(res.Image !== '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
       .addField("Related Topics",".")
       .addFields(fields)
       .setTimestamp()

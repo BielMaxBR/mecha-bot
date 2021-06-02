@@ -3,6 +3,7 @@ const ytdl = require('ytdl-core')
 const log = require('./log.js')
 
 module.exports = async (message, musicLink, client) => {
+  if (message.member.voice.channel == null) return message.channel.send("Entre em um canal");
   let Vchannel = message.member.voice.channel
   let connection = await Vchannel.join()
   

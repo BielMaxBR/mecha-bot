@@ -1,1 +1,1 @@
-worker: npm test
+web: npm test

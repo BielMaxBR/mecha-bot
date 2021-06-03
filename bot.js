@@ -27,7 +27,12 @@ client.on('message',message => {
   const command = args.shift().toLowerCase();
   const path = `./commands/${command}.js`
   if (existsSync(path)) {
-    require(path)({client,message,args})
+    try {
+      require(path)({ client, message, args })}
+    catch(err) {
+      console.log(err)
+      message.channel.send(err)
+    }
   }
 })
 

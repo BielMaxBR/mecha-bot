@@ -40,7 +40,7 @@ module.exports = async function({message, args}) {
       .setTitle(res.Heading)
       .setAuthor(res.AbstractSource)
       .setDescription(res.AbstractText)
-      .setThumbnail(res.Image !== '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
+      .setThumbnail(res.Image != '' ? 'https://api.duckduckgo.com'+res.Image : 'https://cdn.iconscout.com/icon/free/png-256/duckduckgo-3-569238.png')
       .addField("Related Topics",".")
       .addFields(fields)
       .setTimestamp()

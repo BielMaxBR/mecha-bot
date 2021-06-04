@@ -3,7 +3,7 @@ module.exports = (music) => {
   return new Promise(async (resolve, reject) => {
     let res = await search({ videoId: music })
     if (res.url) {
-      resolve(res.url)
+      resolve(res)
 
     } else {
       reject(null)

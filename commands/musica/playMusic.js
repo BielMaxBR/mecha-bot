@@ -10,18 +10,20 @@ module.exports = async (message, musicArg, client) => {
   let musicLink = musicArg
   let data = {}
   if (ytdl.validateURL(musicLink)) {
-    musicLink = await getMusic(ytdl.getURLVideoID(musicLink))
+    console.log('é')
+    data = await getMusic(ytdl.getURLVideoID(musicLink))
   }
-  
-  data = await searchMusic(musicLink)
+  else {
+    data = await searchMusic(musicLink)
+  }
   
   //connection.list.push(data)
+  console.log(await data.url)
 
+  connection.play(ytdl(await data.url)).setVolumeDecibels(50)
   if (!connection.dispatcher) {
-    connection.play(ytdl(data.url))
   }
   /*
-  console.log(connection.dispatcher)
   Log(message.channel, 'queued', data)
   
   message.channel.send(musicLink)

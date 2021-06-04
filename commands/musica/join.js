@@ -1,3 +1,5 @@
+const leave = require('./leave.js')
+
 module.exports = async (client,message) => {
   let Vchannel = message.member.voice.channel
 
@@ -9,16 +11,19 @@ module.exports = async (client,message) => {
     client.Vconnections = {}
   }
   let clientVChannel = message.guild.voiceConnection
-  if(client.Vconnections[Vchannel.id] != null || clientVChannel == Vchannel) {
-    //message.channel.send("eu já estou nesse chat de voz!")
-    return
-  }
-
   let connection = await Vchannel.join()
-  console.log(Object.keys(connection))
-  if(!connection.list) connection.list = []
-  if(!connection.index) connection.index = 0
+  if(client.Vconnections[Vchannel.id] == null || clientVChannel != Vchannel) {
+    //message.channel.send("eu já estou nesse chat de voz!")
   
-  client.Vconnections[Vchannel.id] = connection
+    console.log(Object.keys(connection))
+    if(!connection.list) connection.list = []
+    if(!connection.index) connection.index = 0
+    
+    client.Vconnections[Vchannel.id] = connection
+
+    connection.on('disconnect',()=>{
+      leave(client,message)
+    })
+  }
   return connection
 }

@@ -19,7 +19,7 @@ module.exports = async (message, musicArg, client) => {
     data = await searchMusic(musicLink)
     title = data.title
     musicLink = data.link
-    if(musicLink == null) return
+    //if(musicLink == null) return
   }
   let music = ytdl(musicLink)
   connection.play(music)

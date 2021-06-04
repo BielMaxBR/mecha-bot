@@ -4,33 +4,25 @@ const Log = require('./log.js')
 const searchMusic = require('./searchMusic.js')
 const getMusic = require('./getMusic.js')
 module.exports = async (message, musicArg, client) => {
-  let Vchannel = message.member.voice.channel
-  let musicLink = musicArg
+  
 
-  if (!Vchannel) {
-    message.channel.send("Voce nao esta em um chat de voz")
-    return
-  }
-  if (client.Vconnections == null) {
-    console.log("***********************************")
-    client.Vconnections = {}
-    client.Vconnections[Vchannel.id] = {}
-  }
-  let connection = client.Vconnections[Vchannel.id]
-
-  if (connection === {}) {
+  if (Object.keys(connection).length == 0) {
     connection = await Vchannel.join()
     client.Vconnections[Vchannel.id] = connection
   }
+  
+  let data = {}
   if (ytdl.validateURL(musicLink)) {
-    let data = await getMusic(ytdl.getURLVideoID(musicLink))
+    data = await getMusic(ytdl.getURLVideoID(musicLink))
   }
-
-  let data = await searchMusic(musicLink)
+  
+  data = await searchMusic(musicLink)
+  if(!connection.list) connection.list = []
+  if(!connection.index) connection.index = 0
+  
   connection.list.push(data)
   client.Vconnections[Vchannel.id] = connection
-  console.log(connection)
-  message.channel.send(Object.keys(connection))
+  console.log(connection.dispatcher)
   Log(message.channel, 'queued', data)
   /*
   message.channel.send(musicLink)

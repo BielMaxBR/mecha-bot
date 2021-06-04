@@ -21,6 +21,7 @@ module.exports = async (message, musicArg, client) => {
     musicLink = data.url
     //if(musicLink == null) return
   }
+  message.channel.send(musicLink)
   let music = ytdl(musicLink)
   connection.play(music)
   

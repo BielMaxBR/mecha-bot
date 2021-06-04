@@ -12,9 +12,10 @@ module.exports = async (message, musicArg, client) => {
     return
   }
   if (client.Vconnections === null) client.Vconnections = {}
+  if (client.Vconnections[Vchannel.id] === null) client.Vconnections[Vchannel.id] = {}
   let connection = client.Vconnections[Vchannel.id]
 
-  if (connection === null) {
+  if (connection === {}) {
     connection = await Vchannel.join()
     client.Vconnections[Vchannel.id] = connection
   }

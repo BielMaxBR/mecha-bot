@@ -2,7 +2,13 @@ const search = require('yt-search')
 module.exports = (music) =>{
   return new Promise(async (resolve,reject)=>{
     let res = await search(music)
-    console.log(res.videos)
-    resolve(res.videos[0])
+    let url = res.videos[0].url
+    console.log(url)
+    if(url) {
+    resolve(url)
+      
+    } else {
+      reject(null)
+    }
   })
 }

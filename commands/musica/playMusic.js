@@ -14,7 +14,7 @@ module.exports = async (message, musicArg, client) => {
   }
   if (!ytdl.validateURL(musicLink)) {
     musicLink = await searchMusic(musicLink)
-    return
+    if(musicLink == null) return
   }
   let music = ytdl(musicLink)
   connection.play(music)

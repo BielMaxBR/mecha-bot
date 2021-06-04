@@ -1,11 +1,18 @@
-const { Client } = require("discord.js")
+const { Client } = require("discord.js-light")
 const { existsSync } = require("fs")
-const client = new Client()
+const client = new Client({
+  cacheGuilds: true,
+  cacheChannels: false,
+  cacheOverwrites: false,
+  cacheRoles: false,
+  cacheEmojis: false,
+  cachePresences: false
+})
 const prefix = 'M'
 
-client.on('ready', ()=>{
+client.on('ready', () => {
   console.log('bot iniciado')
-  
+
   client.user.setActivity('mecha bot na área', 'COMPETING')
   let activities = [
     "amogus",
@@ -19,21 +26,22 @@ client.on('ready', ()=>{
   setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
 })
 
-client.on('message',message => {
+client.on('message', message => {
   const content = message.content
   if (!content.startsWith(prefix) || message.author.bot) return;
-  
+
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
   const path = `./commands/${command}.js`
   if (existsSync(path)) {
     try {
-      require(path)({ client, message, args })}
-    catch(err) {
+      require(path)({ client, message, args })
+    }
+    catch (err) {
       console.log(err)
       message.channel.send(err)
     }
   }
 })
 
-module.exports =  client
+module.exports = client

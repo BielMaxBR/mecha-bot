@@ -1,31 +1,37 @@
 const ytdl = require('ytdl-core')
 
-const log = require('./log.js')
+const Log = require('./log.js')
 const searchMusic = require('./searchMusic.js')
+const getMusic = require('./getMusic.js')
 module.exports = async (message, musicArg, client) => {
-  let musicLink = musicArg
-  if (message.member.voice.channel == null) return message.channel.send("Entre em um canal");
   let Vchannel = message.member.voice.channel
-  let connection = await Vchannel.join()
-  
-  if(!Vchannel) {
-    await message.channel.send('entra num chat de voz mano')
+  let musicLink = musicArg
+
+  if (Vchannel == null) {
+    message.channel.send("Voce nao esta em um chat de voz")
     return
   }
-  
-  let data = {}
-  let title = ''
-  if (!ytdl.validateURL(musicLink)) {
-    data = await searchMusic(musicLink)
-    title = data.title
-    musicLink = data.url
-    //if(musicLink == null) return
+  if (client.Vconnections == null) client.Vconnections = {}
+  let connection = client.Vconnections[Vchannel.id]
+
+  if (connection == null) {
+    connection = await Vchannel.join()
+    client.Vconnections[Vchannel.id] = connection
   }
+  if (ytdl.validateURL(musicLink)) {
+    let data = await getMusic(ytdl.getURLVideoID(musicLink))
+  }
+
+  let data = await searchMusic(musicLink)
+  connection.list.push(data)
+  client.Vconnections[Vchannel.id] = connection
+  Log(message.channel, 'queued', data)
+  /*
   message.channel.send(musicLink)
   let music = ytdl(musicLink)
   connection.play(music)
   
   log(message.channel, 'playing',title)
   if (!client.VConnections) client.VConnections = {}
-  client.VConnections[Vchannel.id] = connection 
+  client.VConnections[Vchannel.id] = connection */
 }

@@ -18,7 +18,7 @@ module.exports = async (message, musicArg, client) => {
   if (!ytdl.validateURL(musicLink)) {
     data = await searchMusic(musicLink)
     title = data.title
-    musicLink = data.link
+    musicLink = data.url
     //if(musicLink == null) return
   }
   let music = ytdl(musicLink)

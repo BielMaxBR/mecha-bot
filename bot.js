@@ -1,13 +1,13 @@
-const { Client } = require("discord.js")//-light")
+const { Client } = require("discord.js-light")
 const { existsSync } = require("fs")
-const client = new Client()/*{
-  cacheGuilds: true,
+const client = new Client({
+  cacheGuilds: false,
   cacheChannels: false,
   cacheOverwrites: false,
   cacheRoles: false,
   cacheEmojis: false,
   cachePresences: false
-})*/
+})
 const prefix = 'M'
 
 client.on('ready', () => {

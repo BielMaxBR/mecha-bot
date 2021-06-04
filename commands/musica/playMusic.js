@@ -1,8 +1,9 @@
 const ytdl = require('ytdl-core')
 
 const log = require('./log.js')
-
-module.exports = async (message, musicLink, client) => {
+const searchMusic = require('./searchMusic.js')
+module.exports = async (message, musicArg, client) => {
+  let musicLink = musicArg
   if (message.member.voice.channel == null) return message.channel.send("Entre em um canal");
   let Vchannel = message.member.voice.channel
   let connection = await Vchannel.join()
@@ -12,7 +13,7 @@ module.exports = async (message, musicLink, client) => {
     return
   }
   if (!ytdl.validateURL(musicLink)) {
-    await message.channel.send('insira um link adequado')
+    musicLink = await searchMusic(musicLink)
     return
   }
   let music = ytdl(musicLink)

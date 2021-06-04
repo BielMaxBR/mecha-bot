@@ -1,8 +1,8 @@
 const { Client } = require("discord.js-light")
 const { existsSync } = require("fs")
 const client = new Client({
-  cacheGuilds: false,
-  cacheChannels: false,
+  cacheGuilds: true,
+  cacheChannels: true,
   cacheOverwrites: false,
   cacheRoles: false,
   cacheEmojis: false,

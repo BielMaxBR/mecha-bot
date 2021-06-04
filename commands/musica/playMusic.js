@@ -25,6 +25,8 @@ module.exports = async (message, musicArg, client) => {
   let data = await searchMusic(musicLink)
   connection.list.push(data)
   client.Vconnections[Vchannel.id] = connection
+  console.log(connection)
+  message.channel.send(Object.keys(connection))
   Log(message.channel, 'queued', data)
   /*
   message.channel.send(musicLink)

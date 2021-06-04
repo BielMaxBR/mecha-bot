@@ -7,7 +7,7 @@ module.exports = async (message, musicArg, client) => {
   let Vchannel = message.member.voice.channel
   let musicLink = musicArg
 
-  if (Vchannel === null) {
+  if (!Vchannel) {
     message.channel.send("Voce nao esta em um chat de voz")
     return
   }

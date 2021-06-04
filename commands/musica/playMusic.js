@@ -12,14 +12,19 @@ module.exports = async (message, musicArg, client) => {
     await message.channel.send('entra num chat de voz mano')
     return
   }
+  
+  let data = {}
+  let title = ''
   if (!ytdl.validateURL(musicLink)) {
-    musicLink = await searchMusic(musicLink)
+    data = await searchMusic(musicLink)
+    title = data.title
+    musicLink = data.link
     if(musicLink == null) return
   }
   let music = ytdl(musicLink)
   connection.play(music)
-
-  log(message.channel, 'playing')
+  
+  log(message.channel, 'playing',title)
   if (!client.VConnections) client.VConnections = {}
   client.VConnections[Vchannel.id] = connection 
 }

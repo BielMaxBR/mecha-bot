@@ -1,7 +1,7 @@
-module.exports = async (channel, event) => {
+module.exports = async (channel, event,arg) => {
   switch(event) {
     case "playing":
-      channel.send('tocando musica agora')
+      channel.send('tocando agora '+ arg)
       break;
     case "pause":
       channel.send('pausando musica')

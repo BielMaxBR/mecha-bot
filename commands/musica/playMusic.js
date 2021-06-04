@@ -7,14 +7,14 @@ module.exports = async (message, musicArg, client) => {
   let Vchannel = message.member.voice.channel
   let musicLink = musicArg
 
-  if (Vchannel == null) {
+  if (Vchannel === null) {
     message.channel.send("Voce nao esta em um chat de voz")
     return
   }
-  if (client.Vconnections == null) client.Vconnections = {}
+  if (client.Vconnections === null) client.Vconnections = {}
   let connection = client.Vconnections[Vchannel.id]
 
-  if (connection == null) {
+  if (connection === null) {
     connection = await Vchannel.join()
     client.Vconnections[Vchannel.id] = connection
   }

@@ -11,7 +11,7 @@ module.exports = async (message, musicArg, client) => {
     message.channel.send("Voce nao esta em um chat de voz")
     return
   }
-  if (client.Vconnections === null) {
+  if (client.Vconnections == null) {
     console.log("***********************************")
     client.Vconnections = {}
     client.Vconnections[Vchannel.id] = {}

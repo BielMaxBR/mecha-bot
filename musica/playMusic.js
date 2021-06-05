@@ -20,7 +20,7 @@ module.exports = async (message, musicArg, client) => {
   //connection.list.push(data)
   console.log(await data.url)
 
-  if (!connection.dispatcher) {
+  if (await connection.dispatcher == null) {
     const dispatcher = await connection.play(ytdl(await data.url))
     connection.dispatcher = dispatcher
     dispatcher.on('finished',()=>{

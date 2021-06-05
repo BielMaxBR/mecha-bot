@@ -10,6 +10,6 @@ module.exports = ({ message, args }) => {
     data.replace('*','\\*')
       .replace('`','\\`')
     let msg = "```js\n" + data + "\n```"
-    message.channel.send(data)
+    message.channel.send(msg)
   })
 }

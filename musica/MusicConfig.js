@@ -6,6 +6,7 @@ module.exports = class MusicConfig {
     this.connections = {}
   }
   async join(channel, Mchannel) {
+    if(this.connections[channel.id]) return
     const connection = await channel.join()
     this.createConnection(await connection, channel.id, Mchannel)
   }
@@ -47,8 +48,12 @@ module.exports = class MusicConfig {
 
     this.play(music, id)
   }
-  leave(id) {
-
+  leave(id,channel) {
+    // let connection = message.guild
+    // console.log(connection)
+    channel.leave()
+    delete this.connections[id]
+    
   }
   getConnection(id) {
     return this.connections[id]

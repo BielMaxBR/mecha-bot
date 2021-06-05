@@ -4,4 +4,5 @@ module.exports = async ({client,message}) => {
     message.channel.send('Entre em um chat de voz caramba \'-\'')
     return
   }
+  client.music.join(Vchannel,message.channel)
 }

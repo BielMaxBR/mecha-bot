@@ -33,20 +33,33 @@ client.on('message', async message => {
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
   const dirs = await opendir('./commands')
+  
   for await (let dir of dirs) {
-    //message.channel.send(dir)
-    console.log('***********************')
-    console.log(dir)
+    const category = Object.values(dir)
+    
+    if (category[1] == 1) return
+    let commands = await opendir('./commands/' + category[0])
+    
+    for await (let command of commands) {
+      let command = Object.values(command)
+      
+      if (command[1] == 2) return
+      let path = './commands/' + category[0] + "/" + command[0]
+      
+      try {
+        require(path)({ client, message, args })
+        
+      }
+      catch (err) {
+        console.log(err)
+        message.channel.send(err)
+        
+      }
+    }
   }
   /*const path = `./commands/${command}.js`
   if (existsSync(path)) {
-    try {
-      require(path)({ client, message, args })
-    }
-    catch (err) {
-      console.log(err)
-      message.channel.send(err)
-    }
+    
   }*/
 })
 

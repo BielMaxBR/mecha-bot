@@ -10,7 +10,6 @@ module.exports = async (message, musicArg, client) => {
   let musicLink = musicArg
   let data = {}
   if (ytdl.validateURL(musicLink)) {
-    console.log('é')
     data = await getMusic(ytdl.getURLVideoID(musicLink))
   }
   else {
@@ -24,16 +23,8 @@ module.exports = async (message, musicArg, client) => {
     await message.channel.send(await data.url)
     const dispatcher = await connection.play(ytdl(await data.url))
     connection.dispatcher = dispatcher
-    dispatcher.on('finished',()=>{
+    dispatcher.on('finish',()=>{
       message.channel.send('cabo ;-;')
     })
   }
-  /*
-  Log(message.channel, 'queued', data)
-  
-  message.channel.send(musicLink)
-  let music = ytdl(musicLink)
-  connection.play(music)
-  
-  log(message.channel, 'playing',title)*/
 }

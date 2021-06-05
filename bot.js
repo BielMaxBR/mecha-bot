@@ -1,6 +1,5 @@
 const { Client } = require("discord.js-light")
-const { opendir, readdir } = require("fs/promises")
-const { existsSync } = require('fs')
+const initCommands = require('./initCommands.js')
 const client = new Client({
   cacheGuilds: true,
   cacheChannels: true,
@@ -25,6 +24,8 @@ client.on('ready', () => {
   ]
   i = 0;
   setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
+
+  initCommands(client)
 })
 
 client.on('message', async message => {
@@ -36,33 +37,14 @@ client.on('message', async message => {
 
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
-  const dirs = await opendir('./commands')
-  // itera sobre cada categoria
-  for await (let dir of dirs) {
-    if (dir.isDirectory()) {
-      let path = './commands/' + dir.name + "/" + command + ".js"
-      console.log(path)
-      
-      // roda o arquivo encontrado
-      if (existsSync(path)) {
-        try {
-          require(path)({ client, message, args })
-
-        }
-        catch (err) {
-          console.log(err)
-          message.channel.send(err)
-
-        }
-        break
-      }
-
-    }
+  try {
+    client.commands[command]({ client, message, args })
   }
-  /*const path = `./commands/${command}.js`
-  if (existsSync(path)) {
-    
-  }*/
+  catch (err) {
+    console.log(err)
+    message.channel.send(err)
+
+  }
 })
 
 module.exports = client

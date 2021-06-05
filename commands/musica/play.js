@@ -1,5 +1,5 @@
 
-const playMusic = require('./musica/playMusic.js')
+const playMusic = require('../../musica/playMusic.js')
 
 module.exports = async({client, message, args}) => {
   if (!args[0]) {

@@ -1,5 +1,6 @@
-module.exports = (client,message) => {
-  let Vchannel = message.member.voice.channel
-  delete client.Vconnections[Vchannel.id]
-  Vchannel.leave()
+const leave = require("../../musica/leave.js")
+
+module.exports = ({client,message}) => {
+  leave(client,message)
+  message.channel.send('saindo...')
 }

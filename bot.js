@@ -1,5 +1,5 @@
 const { Client } = require("discord.js-light")
-const { existsSync } = require("fs")
+const { existsSync, openDir, readDir } = require("fs")
 const client = new Client({
   cacheGuilds: true,
   cacheChannels: true,
@@ -32,7 +32,11 @@ client.on('message', message => {
 
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
-  const path = `./commands/${command}.js`
+  const dirs = openDir('./commands')
+  for(let dir of dirs) {
+    message.channel.send(dir)
+  }
+  /*const path = `./commands/${command}.js`
   if (existsSync(path)) {
     try {
       require(path)({ client, message, args })
@@ -41,7 +45,7 @@ client.on('message', message => {
       console.log(err)
       message.channel.send(err)
     }
-  }
+  }*/
 })
 
 module.exports = client

@@ -1,4 +1,4 @@
-const log = require('./musica/log.js')
+const log = require('../../musica/log.js')
 
 module.exports = async ({ client, message }) => {
   let Vchannel = message.member.voice.channel
@@ -10,12 +10,11 @@ module.exports = async ({ client, message }) => {
     return
   }
   console.log(dispatcher.paused)
-  if (!dispatcher.paused) {
-    dispatcher.pause()
-    log(message.channel, 'pause')
-
+  if (dispatcher.paused) {
+    dispatcher.resume()
+    log(message.channel, 'resume')
   } else {
-    message.channel.send('ja ta pausado mano \'-\'')
+    message.channel.send('ja ta rodando mano \'-\'')
   }
 
 }

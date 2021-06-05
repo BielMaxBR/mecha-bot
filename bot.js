@@ -26,7 +26,7 @@ client.on('ready', () => {
   setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
 })
 
-client.on('message', message => {
+client.on('message', async message => {
   const content = message.content
   if (!content.startsWith(prefix) || message.author.bot) return;
 

@@ -1,5 +1,4 @@
-const { opendir, readdir } = require("fs/promises")
-const { existsSync } = require('fs')
+const { opendir } = require("fs/promises")
 
 module.exports = async (client) => {
   const dirs = await opendir('./commands')

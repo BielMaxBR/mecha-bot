@@ -20,8 +20,12 @@ module.exports = async (message, musicArg, client) => {
   //connection.list.push(data)
   console.log(await data.url)
 
-  connection.play(ytdl(await data.url)).setVolumeDecibels(50)
   if (!connection.dispatcher) {
+    const dispatcher = await connection.play(ytdl(await data.url))
+    connection.dispatcher = dispatcher
+    dispatcher.on('finished',()=>{
+      message.channel.send('cabo ;-;')
+    })
   }
   /*
   Log(message.channel, 'queued', data)

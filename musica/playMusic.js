@@ -21,7 +21,8 @@ module.exports = async (message, musicArg, client) => {
   console.log(await data.url)
 
   if (await connection.dispatcher == null) {
-    const dispatcher = await connection.play(ytdl(await data.url))
+    message.channel.send('a')
+    const dispatcher = await connection.play(ytdl("https://youtube.com/watch?v=tkPbS-GtLUg"))
     connection.dispatcher = dispatcher
     dispatcher.on('finished',()=>{
       message.channel.send('cabo ;-;')

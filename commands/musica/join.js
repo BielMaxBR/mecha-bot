@@ -1,6 +1,7 @@
-const join = require('../../musica/join.js')
-
 module.exports = async ({client,message}) => {
-  join(client,message)
-  message.channel.send('entrando!')
+  let Vchannel = message.member.voice.channel
+  if (!Vchannel) {
+    message.channel.send('Entre em um chat de voz caramba \'-\'')
+    return
+  }
 }

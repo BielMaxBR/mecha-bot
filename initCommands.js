@@ -10,7 +10,7 @@ module.exports = async (client) => {
       for await (let comd of comds) {
         if (!comd.isDirectory() && comd.name.indexOf('.js') != -1) {
           if (!client.commands) client.commands = {}
-          client.commands[comd.name.replace('.js','')] = require(path+'/'+comd.name)
+          client.commands[comd.name.replace('.js', '')] = require(path + '/' + comd.name)
         }
       }
     }

@@ -1,6 +1,7 @@
-const leave = require("../../musica/leave.js")
-
 module.exports = ({client,message}) => {
-  leave(client,message)
-  message.channel.send('saindo...')
+  let Vchannel = message.member.voice.channel
+  if (!Vchannel) {
+    message.channel.send('Entre em um chat de voz caramba \'-\'')
+    return
+  }
 }

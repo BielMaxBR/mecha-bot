@@ -1,5 +1,6 @@
 const { Client } = require("discord.js-light")
 const initCommands = require('./initCommands.js')
+const MusicConfig = require("./musica/MusicConfig.js")
 const client = new Client({
   cacheGuilds: true,
   cacheChannels: true,
@@ -14,6 +15,8 @@ client.on('ready', () => {
   console.log('bot iniciado')
 
   client.user.setActivity('mecha bot na área', 'COMPETING')
+
+  client.music = new MusicConfig()
   let activities = [
     "amogus",
     "minescrefts",
@@ -30,7 +33,7 @@ client.on('ready', () => {
 
 client.on('message', async message => {
   const content = message.content
-  if(content == "<@"+client.user.id+">") {
+  if (content == "<@" + client.user.id + ">") {
     message.channel.send('Meu prefixo e `M`')
   }
   if (!content.startsWith(prefix) || message.author.bot) return;

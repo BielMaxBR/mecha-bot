@@ -29,6 +29,9 @@ client.on('ready', () => {
 
 client.on('message', async message => {
   const content = message.content
+  if(content == "<@"+client.user.id+">") {
+    message.channel.send('Meu prefixo e `M`')
+  }
   if (!content.startsWith(prefix) || message.author.bot) return;
 
   const args = content.slice(prefix.length).trim().split(' ');

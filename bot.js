@@ -1,5 +1,5 @@
 const { Client } = require("discord.js-light")
-const { existsSync, opendir, readdir } = require("fs")
+const { opendir, readdir } = require("fs/promises")
 const client = new Client({
   cacheGuilds: true,
   cacheChannels: true,
@@ -32,7 +32,7 @@ client.on('message', message => {
 
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
-  const dirs = opendir('./commands')
+  const dirs = await opendir('./commands')
   for(let dir of dirs) {
     message.channel.send(dir)
   }

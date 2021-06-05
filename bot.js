@@ -36,10 +36,8 @@ client.on('message', async message => {
   const dirs = await opendir('./commands')
   // itera sobre cada categoria
   for await (let dir of dirs) {
-    const category = Object.values(dir)
-    console.log(category)
-    if (category[1] == 2) {
-      let path = './commands/' + category[0] + "/" + command + ".js"
+    if (dir.isDirectory()) {
+      let path = './commands/' + dir.name + "/" + command + ".js"
       console.log(path)
       
       // roda o arquivo encontrado

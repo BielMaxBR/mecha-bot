@@ -33,7 +33,7 @@ client.on('message', async message => {
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
   const dirs = await opendir('./commands')
-  for(let dir of dirs) {
+  for await (let dir of dirs) {
     message.channel.send(dir)
   }
   /*const path = `./commands/${command}.js`

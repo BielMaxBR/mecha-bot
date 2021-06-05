@@ -54,6 +54,8 @@ client.on('message', async message => {
           message.channel.send(err)
 
         }
+        break
+        return
       }
 
     }

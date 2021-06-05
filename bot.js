@@ -37,7 +37,7 @@ client.on('message', async message => {
   // itera sobre cada categoria
   for await (let dir of dirs) {
     const category = Object.values(dir)
-
+    console.log(category)
     if (category[1] == 2) {
       let path = './commands/' + category[0] + "/" + command + ".js"
       console.log(path)

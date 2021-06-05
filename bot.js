@@ -39,8 +39,9 @@ client.on('message', async message => {
     const category = Object.values(dir)
 
     if (category[1] == 2) {
-      let commands = await opendir('./commands/' + category[0])
       let path = './commands/' + category[0] + "/" + command + ".js"
+      console.log(path)
+      
       // roda o arquivo encontrado
       if (existsSync(path)) {
         try {

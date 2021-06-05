@@ -34,7 +34,9 @@ client.on('message', async message => {
   const command = args.shift().toLowerCase();
   const dirs = await opendir('./commands')
   for await (let dir of dirs) {
-    message.channel.send(dir)
+    //message.channel.send(dir)
+    console.log('***********************')
+    console.log(dir)
   }
   /*const path = `./commands/${command}.js`
   if (existsSync(path)) {

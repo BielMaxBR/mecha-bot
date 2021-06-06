@@ -41,7 +41,9 @@ client.on('message', async message => {
   const args = content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
   try {
-    client.commands[command]({ client, message, args })
+    if (client.commands[command]) {
+      client.commands[command]({ client, message, args })
+    }
   }
   catch (err) {
     console.log(err)

@@ -1,4 +1,4 @@
-const server = require("./server/server.js")
+//const server = require("./server/server.js")
 const bot = require("./bot.js")
 console.log(Object.keys(bot))
 require('dotenv').config()

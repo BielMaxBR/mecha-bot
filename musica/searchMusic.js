@@ -31,9 +31,9 @@ module.exports = (music, cid, uid) => {
 }
 
 function searchList(videos, callback) {
-  console.log(videos.length)
-  client.on('message', message => {
+  console.log(videos.length,Object.keys(client))
+  /*client.on('message', message => {
     message.channel.send('\'-\'')
-  })
+  })*/
   // manda uma lista de musicas e espera o usuário responder pra mandar o callback ok?
 }

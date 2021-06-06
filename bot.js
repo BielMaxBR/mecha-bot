@@ -52,4 +52,4 @@ client.on('message', async message => {
   }
 })
 
-module.exports = client
+module.exports = await client

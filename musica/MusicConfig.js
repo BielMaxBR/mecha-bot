@@ -63,7 +63,7 @@ module.exports = class MusicConfig {
     const Mchannel = connection.Mchannel
     const dispatcher = connection.dispatcher
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
-    if (dispatcher.paused) { Mchannel.send('já ta pausado \'-\''); return }
+    //if (dispatcher.paused) { Mchannel.send('já ta pausado \'-\''); return }
     dispatcher.pause()
     musicLog(Mchannel,'pause')
   }
@@ -72,7 +72,7 @@ module.exports = class MusicConfig {
     const Mchannel = connection.Mchannel
     const dispatcher = connection.dispatcher
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
-    if (!dispatcher.paused) { Mchannel.send('já ta tocando \'-\''); return }
+    //if (!dispatcher.paused) { Mchannel.send('já ta tocando \'-\''); return }
     dispatcher.resume()
     musicLog(Mchannel,'resume')
   }

@@ -36,6 +36,17 @@ client.on('message', async message => {
   if (content == "<@" + client.user.id + ">") {
     message.channel.send('Meu prefixo e `M`')
   }
+
+  if (content.toLowerCase().indexOf('ceira') != -1) {
+    let letras = ["c", "e", "i", "r", "a"]
+    for (const l of letras) {
+    }
+    message.guild.emojis.cache.each(emoji=>{
+      console.log(emoji)
+    })
+  }
+
+
   if (!content.startsWith(prefix) || message.author.bot) return;
 
   const args = content.slice(prefix.length).trim().split(' ');
@@ -50,6 +61,10 @@ client.on('message', async message => {
     message.channel.send(err)
 
   }
+})
+
+client.on('messageReactionAdd', async (reaction, user) => {
+  console.log(reaction)
 })
 
 module.exports = client

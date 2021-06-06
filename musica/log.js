@@ -1,7 +1,15 @@
+const { MessageEmbed } = require('discord.js')
 module.exports = async (channel, event, arg) => {
   switch (event) {
     case "playing":
-      channel.send('tocando agora \n '+arg.title + "\n" + arg.url)
+      channel.send(new MessageEmbed()
+        .setAuthor('Tocando agora')
+        .setColor('#ff0000')
+        .setTitle(arg.title)
+        .setThumbnail(arg.image)
+        .setFooter('Mecha-bot')
+        .setURL(arg.url)
+      )
       break;
     case "pause":
       channel.send('pausando musica')
@@ -10,6 +18,14 @@ module.exports = async (channel, event, arg) => {
       channel.send('voltando a tocar')
       break;
     case "queued":
-      channel.send('Musica adicionada a playlist: \n '+arg.title + "\n" + arg.url)
+      channel.send(new MessageEmbed()
+        .setAuthor('Musica adicionada')
+        .setColor('#ff0000')
+        .setTitle(arg.title)
+        .setThumbnail(arg.image)
+        .setFooter('Mecha-bot')
+        .setURL(arg.url)
+      )
+      break;
   }
 }

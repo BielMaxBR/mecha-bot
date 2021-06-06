@@ -1,5 +1,5 @@
 const search = require('yt-search')
-const client = require('./../bot.js')
+const client = require('/bot.js')
 const ytdl = require('ytdl-core')
 
 module.exports = (music, cid, uid) => {

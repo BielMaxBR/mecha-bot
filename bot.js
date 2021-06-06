@@ -16,7 +16,7 @@ client.on('ready', () => {
 
   client.user.setActivity('mecha bot na área', 'COMPETING')
 
-  client.music = new MusicConfig()
+  client.music = new MusicConfig(client)
   let activities = [
     "amogus",
     "minescrefts",

@@ -15,5 +15,5 @@ module.exports = async (client) => {
       }
     }
   }
-  console.log(Object.keys(client.commands))
+  // console.log(Object.keys(client.commands))
 }

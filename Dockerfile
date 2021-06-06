@@ -7,4 +7,4 @@ COPY .env /app/.env
 RUN npm install
 COPY . /app
 
-CMD npm start
+CMD npm test

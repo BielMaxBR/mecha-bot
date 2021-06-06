@@ -2,7 +2,8 @@ const musicLog = require('./log.js')
 const searchMusic = require('./searchMusic.js')
 const ytdl = require('ytdl-core')
 module.exports = class MusicConfig {
-  constructor() {
+  constructor(client) {
+    this.client = client
     this.connections = {}
   }
   async join(channel, Mchannel) {
@@ -17,13 +18,18 @@ module.exports = class MusicConfig {
     connection.Mchannel = Mchannel
     this.connections[id] = connection
   }
-  async addQueue(query, channel, Mchannel,user) {
+  async addQueue(query, channel, Mchannel, user) {
     if (!this.connections[channel.id]) await this.join(channel, Mchannel)
     const connection = this.connections[channel.id]
-    const data = await searchMusic(query,Mchannel.id,user.id)
-    connection.queue.push(data)
+    const data = await searchMusic(this.client, query, Mchannel, user.id)
 
-    musicLog(Mchannel, 'queued', data)
+    if (await data == null) {
+      Mchannel.send('musica cancelada')
+      return
+    }
+    connection.queue.push(await data)
+
+    musicLog(Mchannel, 'queued', await data)
     if (!connection.playing) {
       this.next(channel.id)
     }

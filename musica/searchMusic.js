@@ -11,7 +11,7 @@ module.exports = (music) => {
       let id = ytdl.getURLVideoID(music)
       let res = await search({ videoId: id })
       data = res
-
+      console.log(data.title)
       if (data.url) {
         resolve(data)
   

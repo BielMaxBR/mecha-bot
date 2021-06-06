@@ -15,6 +15,9 @@
     "yt-search": "^2.8.0",
     "ytdl": "^1.4.1"
   },
+  "engines":{
+    "node":"<=14.16.0"
+  },
   "scripts": {
     "test": "nodemon start.js",
     "start": "node start.js"

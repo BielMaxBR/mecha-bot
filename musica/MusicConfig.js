@@ -17,10 +17,10 @@ module.exports = class MusicConfig {
     connection.Mchannel = Mchannel
     this.connections[id] = connection
   }
-  async addQueue(query, channel, Mchannel) {
+  async addQueue(query, channel, Mchannel,user) {
     if (!this.connections[channel.id]) await this.join(channel, Mchannel)
     const connection = this.connections[channel.id]
-    const data = await searchMusic(query,Mchannel.id,Mchannel.author.id)
+    const data = await searchMusic(query,Mchannel.id,user.id)
     connection.queue.push(data)
 
     musicLog(Mchannel, 'queued', data)

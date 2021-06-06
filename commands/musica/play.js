@@ -12,5 +12,5 @@ module.exports = async ({ client, message, args }) => {
   args.forEach(arg => {
     text += arg + " "
   });
-  client.music.addQueue(text, message.member.voice.channel, message.channel)
+  client.music.addQueue(text, message.member.voice.channel, message.channel,message.author)
 }

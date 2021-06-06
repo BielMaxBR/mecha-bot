@@ -7,7 +7,6 @@ module.exports = async (channel, event, arg) => {
         .setColor('#ff0000')
         .setTitle(arg.title)
         .setThumbnail(arg.image)
-        .setFooter('Mecha-bot')
         .setURL(arg.url)
       )
       break;
@@ -22,8 +21,6 @@ module.exports = async (channel, event, arg) => {
         .setAuthor('Musica adicionada')
         .setColor('#ff0000')
         .setTitle(arg.title)
-        .setThumbnail(arg.image)
-        .setFooter('Mecha-bot')
         .setURL(arg.url)
       )
       break;

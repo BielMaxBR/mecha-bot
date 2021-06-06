@@ -14,14 +14,14 @@ module.exports = (music) => {
       console.log(data.title)
       if (data.url) {
         resolve(data)
-  
+
       } else {
         reject(null)
       }
 
     } else {
       let res = await search(music)
-      searchList(res.videos,(music)=>{
+      searchList(res.videos, (music) => {
         resolve(music)
       })
     }
@@ -29,6 +29,6 @@ module.exports = (music) => {
   })
 }
 
-function searchList(videos,callback) {
+function searchList(videos, callback) {
   // manda uma lista de musicas e espera o usuário responder pra mandar o callback ok?
 }

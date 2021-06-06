@@ -6,10 +6,10 @@ module.exports = async ({ message, args }) => {
   for (let msg = 0 + deleteMsg[1]; msg < args.length; msg++) {
     content += args[msg] + " "
   }
-  
-  if(content.length != 0) {
+
+  if (content.length != 0) {
     await message.channel.send(content)
-    if(deleteMsg[0]) {
+    if (deleteMsg[0]) {
       await message.delete()
     }
   } else {

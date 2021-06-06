@@ -1,4 +1,4 @@
-module.exports = ({message}) => {
+module.exports = ({ message }) => {
   const used = process.memoryUsage();
   let text = 'Ram usage:\n'
   for (let key in used) {

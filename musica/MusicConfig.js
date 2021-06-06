@@ -6,7 +6,7 @@ module.exports = class MusicConfig {
     this.connections = {}
   }
   async join(channel, Mchannel) {
-    if(this.connections[channel.id]) return
+    if (this.connections[channel.id]) return
     const connection = await channel.join()
     this.createConnection(await connection, channel.id, Mchannel)
   }
@@ -48,12 +48,12 @@ module.exports = class MusicConfig {
 
     this.play(music, id)
   }
-  leave(id,channel) {
+  leave(id, channel) {
     // let connection = message.guild
     // console.log(connection)
     channel.leave()
     delete this.connections[id]
-    
+
   }
   getConnection(id) {
     return this.connections[id]
@@ -65,7 +65,7 @@ module.exports = class MusicConfig {
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
     //if (dispatcher.paused) { Mchannel.send('já ta pausado \'-\''); return }
     dispatcher.pause()
-    musicLog(Mchannel,'pause')
+    musicLog(Mchannel, 'pause')
   }
   resume(id) {
     const connection = this.connections[id]
@@ -74,6 +74,6 @@ module.exports = class MusicConfig {
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
     //if (!dispatcher.paused) { Mchannel.send('já ta tocando \'-\''); return }
     dispatcher.resume()
-    musicLog(Mchannel,'resume')
+    musicLog(Mchannel, 'resume')
   }
 }

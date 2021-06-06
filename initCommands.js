@@ -5,7 +5,7 @@ module.exports = async (client) => {
   // itera sobre cada categoria
   for await (let dir of dirs) {
     if (dir.isDirectory()) {
-      let path = './commands/' + dir.name// + "/" + command + ".js"
+      let path = './commands/' + dir.name // + "/" + command + ".js"
       const comds = await opendir(path)
       for await (let comd of comds) {
         if (!comd.isDirectory() && comd.name.indexOf('.js') != -1) {

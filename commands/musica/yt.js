@@ -1,6 +1,6 @@
 const search = require('yt-search');
 const ytdl = require('ytdl-core');
-const {MessageEmbed} = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 module.exports = async ({ message, args }) => {
   let text = ''
   const con = await message.member.voice.channel.join()

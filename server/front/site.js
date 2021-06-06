@@ -5,17 +5,17 @@ window.onload = () => {
   if (!code) {
     return document.getElementById('login').style.display = 'block';
   } else {
-    fetch("/api/user",{
-      method:'GET',
-      headers: {
-        code: code
-      }
-    })
-    .then(response => response.json())
-    .then(res => {
-      console.log(res)
-    })  
-  
+    fetch("/api/user", {
+        method: 'GET',
+        headers: {
+          code: code
+        }
+      })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res)
+      })
+
   }
 }
 console.log(window.location)

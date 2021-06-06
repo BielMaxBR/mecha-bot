@@ -46,6 +46,7 @@ module.exports = class MusicConfig {
   }
   next(id) {
     const connection = this.connections[id]
+    if (!connection) { return }
     connection.index++
     const index = connection.index
     const queue = connection.queue
@@ -66,6 +67,7 @@ module.exports = class MusicConfig {
   }
   pause(id) {
     const connection = this.connections[id]
+    if (!connection) { return }
     const Mchannel = connection.Mchannel
     const dispatcher = connection.dispatcher
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
@@ -75,11 +77,21 @@ module.exports = class MusicConfig {
   }
   resume(id) {
     const connection = this.connections[id]
+    if (!connection) { return }
     const Mchannel = connection.Mchannel
     const dispatcher = connection.dispatcher
     if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
     //if (!dispatcher.paused) { Mchannel.send('já ta tocando \'-\''); return }
     dispatcher.resume()
     musicLog(Mchannel, 'resume')
+  }
+  gain(id, db) {
+    const connection = this.connections[id]
+    if (!connection) { return }
+    const Mchannel = connection.Mchannel
+    const dispatcher = connection.dispatcher
+    if (!dispatcher) { Mchannel.send('não tem nada tocando \'-\''); return }
+    dispatcher.setVolumeDecibels(db)
+    Mchannel.send('Ganho de volume: ' + db)
   }
 }

@@ -34,6 +34,46 @@ module.exports = class MusicConfig {
       this.next(channel.id)
     }
   }
+  queueList(id) {
+    const connection = this.connections[id]
+    if (!connection) { return }
+    const Mchannel = connection.Mchannel
+    const queue = connection.queue
+
+    let msg = "```nim\n"
+    if (queue.length > 0) {
+      for (const music of queue) {
+        let nome = music.title
+
+        if (nome.length > 33) {
+          nome = nome.slice(0, 33)
+          nome += '...'
+        }
+        while (nome.length < 36) {
+          nome += " "
+        }
+
+        nome = nome
+          .replace(`"`, "")
+          .replace("'", "")
+          .replace('*', "")
+          .replace('**', "")
+          .replace('`', "")
+          .replace('```', "")
+
+        let duracao = music.timestamp
+        let digito = +queue.indexOf(music) + 1
+        let text = ` ${digito}- ${nome} -- ${duracao}`
+
+        msg += text + '\n'
+      }
+    } else {
+      msg += 'A lista está vazia meu amigo\n'
+    }
+
+    msg += "```"
+    Mchannel.send(msg)
+  }
   async play(music, id) {
     const connection = this.connections[id]
     musicLog(connection.Mchannel, 'playing', music)

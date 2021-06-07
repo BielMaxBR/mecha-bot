@@ -34,19 +34,15 @@ client.on('ready', () => {
 client.on('message', async message => {
   const content = message.content
   if (content == "<@" + client.user.id + ">") {
-    message.channel.send('Meu prefixo e `M`')
+    message.channel.send('Meu prefixo e **M**')
   }
 
   if (content.toLowerCase().indexOf('ceira') != -1) {
-    let letras = ["c", "e", "i", "r", "a"]
-    for (const l of letras) {
-    }
     message.react('🇨')
     message.react('🇪')
     message.react('🇮')
     message.react('🇷')
     message.react('🇦')
-    console.log(message.guild.emojis.cache.array())
   }
 
 
@@ -64,11 +60,6 @@ client.on('message', async message => {
     message.channel.send(err)
 
   }
-})
-
-client.on('messageReactionAdd', async (reaction, user) => {
-  console.log(reaction._emoji)
-  reaction.message.react(reaction._emoji)
 })
 
 module.exports = client

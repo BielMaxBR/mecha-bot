@@ -38,11 +38,11 @@ client.on('message', async message => {
   }
 
   if (content.toLowerCase().indexOf('ceira') != -1) {
-    message.react('🇨')
-    message.react('🇪')
-    message.react('🇮')
-    message.react('🇷')
-    message.react('🇦')
+    message.react('🇨').then(()=>{
+    message.react('🇪').then(()=>{
+    message.react('🇮').then(()=>{
+    message.react('🇷').then(()=>{
+    message.react('🇦')})})})})
   }
 
 

@@ -41,9 +41,12 @@ client.on('message', async message => {
     let letras = ["c", "e", "i", "r", "a"]
     for (const l of letras) {
     }
-    message.guild.emojis.cache.each(emoji=>{
-      console.log(emoji)
-    })
+    message.react('🇨')
+    message.react('🇪')
+    message.react('🇮')
+    message.react('🇷')
+    message.react('🇦')
+    console.log(message.guild.emojis.cache.array())
   }
 
 
@@ -64,7 +67,8 @@ client.on('message', async message => {
 })
 
 client.on('messageReactionAdd', async (reaction, user) => {
-  console.log(reaction)
+  console.log(reaction._emoji)
+  reaction.message.react(reaction._emoji)
 })
 
 module.exports = client

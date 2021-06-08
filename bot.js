@@ -6,7 +6,7 @@ const client = new Client({
   cacheChannels: true,
   cacheOverwrites: false,
   cacheRoles: false,
-  cacheEmojis: false,
+  cacheEmojis: true,
   cachePresences: false
 })
 const prefix = 'M'

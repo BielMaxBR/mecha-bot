@@ -40,20 +40,18 @@ async function searchList(client, channel, uid, videos, callback) {
       nome = nome.slice(0, 33)
       nome += '...'
     }
-    while(nome.length < 36) {
+    while (nome.length < 36) {
       nome += " "
     }
 
-    nome = nome
-      .replace(`"`,"")
-      .replace("'","")
-      .replace('*',"")
-      .replace('**',"")
-      .replace('`',"")
-      .replace('```',"")
+    let symbols = [`"`, "'", '*', '**', '`']
+    for (symbol of symbols) {
+      nome = nome.replace(symbol, "")
+    }
+
 
     let duracao = videos[video].timestamp
-    let digito = +video+1
+    let digito = +video + 1
     let text = ` ${digito}- ${nome} -- ${duracao}`
 
     videostxt += text + '\n'
@@ -62,37 +60,37 @@ async function searchList(client, channel, uid, videos, callback) {
   videostxt += '\n \n (fale o número que deseja de 1 a 10 ou digite Q para cancelar")```'
 
   const msgList = await channel.send(videostxt)
-  
-  
-  
+
+
+
   msgList.fetch().then(_ => {
     let achou = false
-    
+
     client.on('message', m => {
-      if (m.channel.id == channel.id && m.author.id == uid ) {
+      if (m.channel.id == channel.id && m.author.id == uid) {
         if (m.content == "Q") {
           callback(null)
           return
         }
         let num = +m.content
-        if(!num) return
+        if (!num) return
         if (num < 1 || num > 10) {
           m.reply('Envie um número de 1 a 10')
           return
         }
 
         achou = true
-        callback(videos[num-1])
+        callback(videos[num - 1])
         return
       }
     })
 
-    setTimeout(()=>{
-      if(!achou) {
+    setTimeout(() => {
+      if (!achou) {
         callback(null)
       }
-    },60000)
-  
+    }, 60000)
+
   })
   // manda uma lista de musicas e espera o usuário responder pra mandar o callback ok?
 }

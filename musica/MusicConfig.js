@@ -17,6 +17,10 @@ module.exports = class MusicConfig {
     connection.playing = false
     connection.Mchannel = Mchannel
     this.connections[id] = connection
+
+    connection.on('disconnect',()=>{
+      delete this.connections[id]
+    })
   }
   async addQueue(query, channel, Mchannel, user) {
     if (!this.connections[channel.id]) await this.join(channel, Mchannel)
@@ -52,15 +56,11 @@ module.exports = class MusicConfig {
         while (nome.length < 36) {
           nome += " "
         }
-
-        nome = nome
-          .replace(`"`, "")
-          .replace("'", "")
-          .replace('*', "")
-          .replace('**', "")
-          .replace('`', "")
-          .replace('```', "")
-
+        let symbols = [`"`,"'",'*','**','`']
+        for (symbol of symbols) {
+          nome = nome.replace(symbol, "")
+        }
+          
         let duracao = music.timestamp
         let digito = +queue.indexOf(music) + 1
         let text = ` ${digito}- ${nome} -- ${duracao}`

@@ -30,6 +30,8 @@ module.exports = class MusicConfig {
 
     if (await data == null) {
       Mchannel.send('musica cancelada')
+      reaction.message.react('✋')
+      reaction.remove()
       return
     } else {
       reaction.remove()

@@ -22,14 +22,17 @@ module.exports = class MusicConfig {
       delete this.connections[id]
     })
   }
-  async addQueue(query, channel, Mchannel, user) {
+  async addQueue(query, channel, Mchannel, user, reaction) {
     if (!this.connections[channel.id]) await this.join(channel, Mchannel)
     const connection = this.connections[channel.id]
+    
     const data = await searchMusic(this.client, query, Mchannel, user.id)
 
     if (await data == null) {
       Mchannel.send('musica cancelada')
       return
+    } else {
+      reaction.remove()
     }
     connection.queue.push(await data)
 

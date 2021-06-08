@@ -8,9 +8,12 @@ module.exports = async ({ client, message, args }) => {
     message.channel.send('Entre em um chat de voz caramba \'-\'')
     return
   }
+  
+  const reaction = await message.react('<:loading:851816238925479957>')
+  
   let text = ''
   args.forEach(arg => {
     text += arg + " "
   });
-  client.music.addQueue(text, message.member.voice.channel, message.channel,message.author)
+  client.music.addQueue(text, message.member.voice.channel, message.channel,message.author, await reaction)
 }

@@ -31,10 +31,10 @@ module.exports = class MusicConfig {
     if (await data == null) {
       Mchannel.send('musica cancelada')
       reaction.message.react('✋')
-      reaction.remove()
+      reaction.users.remove(this.client.user.id)
       return
     } else {
-      reaction.remove()
+      reaction.users.remove(this.client.user.id)
     }
     connection.queue.push(await data)
 

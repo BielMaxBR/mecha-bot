@@ -2,7 +2,7 @@ const {MessageEmbed} = require("discord.js")
 const fetch = require("node-fetch")
 require("dotenv").config()
 
-module.exports = async ({ message }) => {
+module.exports = async ({ message, args }) => {
     const url = "http://api.openweathermap.org/data/2.5/weather?"
 
     const apiKey = "&appid=" + process.env.API

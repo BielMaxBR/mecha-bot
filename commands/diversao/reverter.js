@@ -9,5 +9,5 @@ module.exports = async ({ message, args }) => {
         textoFinal += textoInicial[i]
     }
 
-    message.channel.send("```" + textoFinal + "```")
+    message.channel.send("```\n" + textoFinal + "\n```")
 }

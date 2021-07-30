@@ -35,10 +35,7 @@ module.exports = async ({ message, args }) => {
         .addFields(
         {
             name: "**Temperatura**",
-            value: `Atual: ${json.main.temp} ºC \n
-                        Máxima: ${json.main.temp_max} ºC \n 
-                        Mínima: ${json.main.temp_min} ºC \n 
-                        Sensação térmica: ${json.main.feels_like} ºC`,
+            value: `Atual: ${json.main.temp} ºC \nMáxima: ${json.main.temp_max} ºC \nMínima: ${json.main.temp_min} ºC \nSensação térmica: ${json.main.feels_like} ºC`,
             inline: true
         }, { name: "**Umidade**", value: `${json.main.humidity}%`, inline: true }, { name: "**Velocidade do vento**", value: `${json.wind.speed} km/h`, inline: true }, { name: "**Pressão do ar**", value: `${json.main.pressure} kPA`, inline: true })
 

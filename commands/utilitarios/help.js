@@ -1,3 +1,3 @@
 module.exports = ({ message }) => {
-  message.reply('ta perdido? liga pro batman')
+    message.reply('ta perdido? liga pro batman')
 }

@@ -34,7 +34,7 @@ module.exports = async ({ client, message, args }) => {
                 message.channel.send("nenhum servidor está conectado")
                 return
             }
-            const list = "lista de servidores conectados:\n"
+            let list = "lista de servidores conectados:\n"
             for (const id of Object.keys(client.remoteList)) {
                 list += client.guilds.cache.get(id).name + "\n"
             }

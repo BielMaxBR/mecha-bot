@@ -1,6 +1,12 @@
 const { pegarHook, criarHook } = require("../../misc/webhookManager.js")
 
 module.exports = async ({ client, message, args }) => {
+    
+    if(!client.me.hasPermission("MANAGE_WEBHOOKS")) {
+        message.channel.send("Eu não tenho permissão de gerenciar webhooks, chame um adm para me liberar")
+        return
+    }
+    
     const command = args[0].toLowerCase()
 
     let args2 = args.slice(1,args.length-1)

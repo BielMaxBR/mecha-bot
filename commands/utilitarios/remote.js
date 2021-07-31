@@ -6,7 +6,10 @@ module.exports = async ({ client, message, args }) => {
         message.channel.send("Eu não tenho permissão de gerenciar webhooks, chame um adm para me liberar")
         return
     }
-
+    if (args.length == 0) {
+        message.channel.send("Comando para conexão de chat com outros sevidores")
+        return
+    }
     const command = args[0].toLowerCase()
 
     let args2 = args.slice(1, args.length - 1)
@@ -38,6 +41,6 @@ module.exports = async ({ client, message, args }) => {
             break
         default:
             message.channel.send("Comando para conexão de chat com outros sevidores")
-          break
+            break
     }
 }

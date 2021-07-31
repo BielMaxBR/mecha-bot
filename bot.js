@@ -1,4 +1,4 @@
-const { remoteRun } = require("misc/webhookManager.js")
+const { remoteRun } = require("./misc/webhookManager.js")
 
 const { Client } = require("discord.js-light")
 const initCommands = require('./initCommands.js')

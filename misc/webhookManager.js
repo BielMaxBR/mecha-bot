@@ -30,11 +30,11 @@ async function remoteRun(client, message) {
         const channel = server.channels.cache.get(channelId)
 
         const avatarURL = message.author.avatarURL()
-        const username = message.author.username+" <"+message.guild.name+">"
+        const username = message.author.username + " <" + message.guild.name + ">"
 
         const hook = await pegarHook(channel)
-        
-        hook.send(message.content,{
+
+        hook.send(message.content, {
             avatarURL,
             username
         })

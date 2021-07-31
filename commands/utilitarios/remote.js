@@ -12,7 +12,7 @@ module.exports = async ({ client, message, args }) => {
             client.remoteList[message.guild.id] = channel
 
             if (!await pegarHook(channel)) {
-                const hook = await createHook(channel)
+                const hook = await criarHook(channel)
                 if (hook) {
                     message.channel.send("conectado ao crossover")
                 }

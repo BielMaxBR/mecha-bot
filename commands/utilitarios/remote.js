@@ -17,6 +17,7 @@ module.exports = async ({ client, message, args }) => {
                     message.channel.send("conectado ao crossover")
                 }
             }
+            message.channel.send("conectado ao crossover")
             break
         case "list":
             if (!client.remoteList || Object.keys(client.remoteList).length == 0) {

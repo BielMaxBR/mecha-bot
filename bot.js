@@ -1,23 +1,25 @@
+const { remoteRun } = require("misc/webhookManager.js")
+
 const { Client } = require("discord.js-light")
 const initCommands = require('./initCommands.js')
 const MusicConfig = require("./musica/MusicConfig.js")
 const client = new Client({
-  cacheGuilds: true,
-  cacheChannels: true,
-  cacheOverwrites: false,
-  cacheRoles: false,
-  cacheEmojis: true,
-  cachePresences: false
+    cacheGuilds: true,
+    cacheChannels: true,
+    cacheOverwrites: false,
+    cacheRoles: false,
+    cacheEmojis: true,
+    cachePresences: false
 })
 const prefix = 'M'
 
 client.on('ready', () => {
-  console.log('bot iniciado')
+    console.log('bot iniciado')
 
-  client.user.setActivity('mecha bot na área', 'COMPETING')
+    client.user.setActivity('mecha bot na área', 'COMPETING')
 
-  client.music = new MusicConfig(client)
-  let activities = [
+    client.music = new MusicConfig(client)
+    let activities = [
     "amogus",
     "minescrefts",
     "fogo gratis",
@@ -25,41 +27,48 @@ client.on('ready', () => {
     "robrox",
     "bosta pela janela"
   ]
-  i = 0;
-  setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
+    i = 0;
+    setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`), 10000);
 
-  initCommands(client)
+    initCommands(client)
 })
 
 client.on('message', async message => {
-  const content = message.content
-  if (content == "<@" + client.user.id + ">") {
-    message.channel.send('Meu prefixo e **M**')
-  }
+    const content = message.content
 
-  if (content.toLowerCase().indexOf('ceira') != -1) {
-    message.react('🇨').then(()=>{
-    message.react('🇪').then(()=>{
-    message.react('🇮').then(()=>{
-    message.react('🇷').then(()=>{
-    message.react('🇦')})})})})
-  }
+    remoteRun(client, message);
 
-
-  if (!content.startsWith(prefix) || message.author.bot) return;
-
-  const args = content.slice(prefix.length).trim().split(' ');
-  const command = args.shift().toLowerCase();
-  try {
-    if (client.commands[command]) {
-      client.commands[command]({ client, message, args })
+    if (content == "<@" + client.user.id + ">") {
+        message.channel.send('Meu prefixo e **M**')
     }
-  }
-  catch (err) {
-    console.log(err)
-    message.channel.send(err)
 
-  }
+    if (content.toLowerCase().indexOf('ceira') != -1) {
+        message.react('🇨').then(() => {
+            message.react('🇪').then(() => {
+                message.react('🇮').then(() => {
+                    message.react('🇷').then(() => {
+                        message.react('🇦')
+                    })
+                })
+            })
+        })
+    }
+
+
+    if (!content.startsWith(prefix) || message.author.bot) return;
+
+    const args = content.slice(prefix.length).trim().split(' ');
+    const command = args.shift().toLowerCase();
+    try {
+        if (client.commands[command]) {
+            client.commands[command]({ client, message, args })
+        }
+    }
+    catch (err) {
+        console.log(err)
+        message.channel.send(err)
+
+    }
 })
 
 module.exports = client

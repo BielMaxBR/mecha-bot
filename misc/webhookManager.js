@@ -24,7 +24,7 @@ async function remoteRun(client, message) {
     for (const serverId of Object.keys(remoteList)) {
         const channelId = remoteList[serverId]
 
-        if (serverId == message.guild.id) return
+        if (serverId == message.guild.id) continue
 
         const server = client.guilds.cache.get(serverId)
         const channel = server.channels.cache.get(channelId)

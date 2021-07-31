@@ -3,7 +3,7 @@ const { pegarHook, criarHook } = require("../../misc/webhookManager.js")
 module.exports = async ({ client, message, args }) => {
     const command = args[0].toLowerCase()
 
-    let args2 = args.shift()
+    let args2 = args.slice(1,args.length-1)
     switch (command) {
         case "connect":
             if (!client.remoteList) client.remoteList = {}

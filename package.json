@@ -4,17 +4,17 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
-    "cheerio": "^1.0.0-rc.9",
+    "@discordjs/opus": "^0.5.3",
+    "cheerio": "^1.0.0-rc.10",
     "discord.js": "^12.5.3",
     "discord.js-light": "^3.5.11",
     "dotenv": "^8.6.0",
     "ffmpeg": "0.0.4",
-    "ffmpeg-static": "^4.3.0",
+    "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.1-security",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.7",
-    "yt-search": "^2.8.0",
+    "nodemon": "^2.0.12",
+    "yt-search": "^2.10.0",
     "ytdl": "^1.4.1"
   },
   "engines": {

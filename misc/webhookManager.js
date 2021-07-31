@@ -20,7 +20,9 @@ async function remoteRun(client, message) {
     if (!client.remoteList || message.author.bot) return
 
     const remoteList = client.remoteList
-
+    
+    if(remoteList[message.guild.id] != message.channel.id) return
+    
     for (const serverId of Object.keys(remoteList)) {
         const channelId = remoteList[serverId]
 

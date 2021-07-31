@@ -38,8 +38,8 @@ client.on('message', async message => {
 
     remoteRun(client, message);
 
-    if (content == "<@" + client.user.id + ">") {
-        message.channel.send('Meu prefixo e **M**')
+    if (message.mentions.has(client.user)) {
+        message.channel.send('Meu prefixo é **M**')
     }
 
     if (content.toLowerCase().indexOf('ceira') != -1) {

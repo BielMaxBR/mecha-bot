@@ -24,6 +24,7 @@ module.exports = async ({ client, message, args }) => {
                 const hook = await criarHook(channel)
                 if (hook) {
                     message.channel.send("conectado ao crossover")
+                    return
                 }
             }
             message.channel.send("conectado ao crossover")

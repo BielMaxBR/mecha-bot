@@ -62,7 +62,7 @@ module.exports = class MusicConfig {
           nome += " "
         }
         let symbols = [`"`,"'",'*','**','`']
-        for (symbol of symbols) {
+        for (const symbol of symbols) {
           nome = nome.replace(symbol, "")
         }
           

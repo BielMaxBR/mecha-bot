@@ -28,7 +28,7 @@ async function remoteRun(client, message) {
 
         const server = client.guilds.cache.get(serverId)
         const channel = server.channels.cache.get(channelId)
-        console.log(server.name,"\n",channel.name)
+        console.log(server.name,"\n",channelId)
         const avatarURL = message.author.avatarURL()
         const username = message.author.username + " <" + message.guild.name + ">"
 

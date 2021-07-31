@@ -8,7 +8,7 @@ module.exports = async ({ client, message, args }) => {
         case "connect":
             if (!client.remoteList) client.remoteList = {}
 
-            const channel = args2[0] || message.channel.id
+            const channel = message.guild.channels.get(args2[0]) || message.channel
             client.remoteList[message.guild.id] = channel
 
             if (!await pegarHook(channel)) {

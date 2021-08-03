@@ -2,10 +2,10 @@ const { pegarHook, criarHook } = require("../../misc/webhookManager.js")
 
 module.exports = async ({ client, message, args }) => {
 
-    if (message.guild.me.hasPermission("MANAGE_WEBHOOKS")) {
+    /*if (!message.guild.me.hasPermission("MANAGE_WEBHOOKS")) {
         message.channel.send("Eu não tenho permissão de gerenciar webhooks, chame um adm para me liberar")
         return
-    }
+    }*/
     if (args.length == 0) {
         message.channel.send("Comando para conexão de chat com outros sevidores")
         return

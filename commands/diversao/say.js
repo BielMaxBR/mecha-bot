@@ -13,6 +13,6 @@ module.exports = async ({ message, args }) => {
       await message.delete()
     }
   } else {
-    await message.channel.reply('nao posso enviar nada vazio!')
+    await message.reply('nao posso enviar nada vazio!')
   }
 }

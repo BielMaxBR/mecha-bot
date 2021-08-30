@@ -11,7 +11,7 @@ const client = new Client({
     cacheEmojis: true,
     cachePresences: false
 })
-const prefix = 'M'
+const prefix = process.env.PREFIX
 
 client.on('ready', () => {
     console.log('bot iniciado')

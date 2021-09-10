@@ -37,8 +37,8 @@ client.on('message', async message => {
     const content = message.content
 
     remoteRun(client, message);
-
-    if (message.mentions.has(client.user)) {
+    console.log(message.content,"\n",client.user.toString())
+    if (message.content == `<@!${client.user.id}>` || message.content == `<@${client.user.id}>` ) {
         message.channel.send('Meu prefixo é **M**')
     }
 

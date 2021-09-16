@@ -6,7 +6,7 @@ const MusicConfig = require("./musica/MusicConfig.js")
 const client = new Client({
     cacheGuilds: true,
     cacheChannels: true,
-    cacheOverwrites: false,
+    cacheOverwrites: true,
     cacheRoles: false,
     cacheEmojis: true,
     cachePresences: false
@@ -36,8 +36,8 @@ client.on('ready', () => {
 client.on('message', async message => {
     const content = message.content
 
-    remoteRun(client, message);
-    console.log(message.content,"\n",client.user.toString())
+    remoteRun(client, message)
+    
     if (message.content == `<@!${client.user.id}>` || message.content == `<@${client.user.id}>` ) {
         message.channel.send('Meu prefixo é **M**')
     }

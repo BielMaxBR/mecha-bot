@@ -6,7 +6,7 @@ module.exports = async function({ message, args }) {
         text += args[i] + " "
     }
 
-    await message.channel.send(`enviando no pv de ${mention.nickname || mention.user.username}`)
+    await message.channel.send(`${message.author.nickname || message.author.name} está enviando no pv de ${mention.nickname || mention.user.username}`)
 
-    await mention.send(text)
+    await mention.send(`_texto enviado por ${message.author.nickname || message.author.name}_\n \n${text}`)
 }

@@ -1,15 +1,15 @@
 const { remoteRun } = require("./misc/webhookManager.js")
 
-const { Client } = require("discord.js-light")
+const { Client } = require("discord.js")
 const initCommands = require('./initCommands.js')
 const MusicConfig = require("./musica/MusicConfig.js")
 const client = new Client({
     cacheGuilds: true,
     cacheChannels: true,
     cacheOverwrites: true,
-    cacheRoles: false,
+    cacheRoles: true,
     cacheEmojis: true,
-    cachePresences: false
+    cachePresences: true
 })
 const prefix = "M"
 

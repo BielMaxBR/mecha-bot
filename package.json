@@ -16,7 +16,7 @@
     "nodemon": "^2.0.12",
     "yt-search": "^2.10.0",
     "ytdl": "^1.4.1",
-    "ytdl-core": "^4.9.1"
+    "ytdl-core": "^4.9.2"
   },
   "engines": {
     "node": "<=14.16.0"

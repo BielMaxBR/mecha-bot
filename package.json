@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.8.0",
     "cheerio": "^1.0.0-rc.10",
     "discord.js": "^12.5.3",
     "discord.js-light": "^3.5.11",
